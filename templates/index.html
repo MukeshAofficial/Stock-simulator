@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stock Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Live Stock Visualizer</h1>
+
+        <!-- Search Bar -->
+        <form action="/stock" method="post" class="mb-8 flex justify-center">
+            <input type="text" name="ticker" placeholder="Search for a stock (e.g., AAPL)" class="p-2 w-80 rounded-lg bg-gray-700 text-white border-none" required>
+            <button type="submit" class="ml-2 p-2 bg-blue-500 hover:bg-blue-700 rounded-lg">Search</button>
+        </form>
+
+        <!-- Stock List -->
+        <div class="grid grid-cols-3 gap-6">
+            <!-- Example Stock Cards -->
+            {% for stock in stocks %}
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl text-center hover:scale-105 transform transition duration-300">
+                <a href="/stock/{{ stock }}" class="text-xl font-bold hover:text-blue-400">{{ stock }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
